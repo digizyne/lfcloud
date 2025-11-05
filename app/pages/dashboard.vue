@@ -1,7 +1,39 @@
 <template>
-  <h1>Dashboard</h1>
+  <UContainer>
+    <p v-if="status === 'pending'">Loading deployments...</p>
+    <p v-else-if="status === 'error'">Error loading deployments: {{ error }}</p>
+    <div v-else-if="status === 'success'">
+      <UPageHeader title="Your Deployments" :ui="{ root: 'border-b-0' }" />
+      <UPageGrid>
+        <UPageCard
+          v-for="deployment in data.deployments"
+          :key="deployment.name"
+          :title="deployment.name"
+          :to="`/deployment/${deployment.name}`"
+        >
+          <template #description>
+            <a
+              :href="deployment.url"
+              target="_blank"
+              class="relative z-10 hover:underline"
+              >{{ deployment.url }}</a
+            >
+          </template>
+        </UPageCard>
+      </UPageGrid>
+    </div>
+  </UContainer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "dashboard",
+});
+
+const { data, status, error } = await useLazyFetch<any>("/api/deployments", {
+  method: "GET",
+  credentials: "include",
+});
+</script>
 
 <style scoped></style>

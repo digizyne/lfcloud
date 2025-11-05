@@ -2,7 +2,7 @@
   <div
     class="w-screen h-screen bg-[url(/images/landing-page-bg.jpg)] bg-center bg-cover overflow-hidden relative grid place-content-center gap-5"
   >
-    <h1 class="text-white text-5xl text-center">Local-First Cloud</h1>
+    <h1 class="text-white text-5xl text-center">0p5.dev</h1>
     <p class="text-white text-2xl text-center">
       The deployment platform
       <span class="text-primary">for developers </span>
