@@ -6,7 +6,7 @@
       </template>
       <template #right>
         <div class="flex items-center gap-4">
-          <p>Logged In as {developer}</p>
+          <UUser :name="user as string" size="xl" />
           <UButton size="xl" color="neutral">Logout</UButton>
         </div>
       </template>
@@ -16,6 +16,8 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { user } = useAuth();
+</script>
 
 <style scoped></style>

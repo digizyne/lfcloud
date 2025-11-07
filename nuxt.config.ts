@@ -4,4 +4,5 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/image", "nuxt-charts"],
   css: ["~/assets/css/main.css"],
+  ssr: true,
 });

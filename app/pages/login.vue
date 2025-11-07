@@ -3,7 +3,7 @@
     <UPageCard class="w-xs">
       <UAuthForm
         :schema="schema"
-        title="Login to lfcloud"
+        title="Login to 0p5.dev"
         :fields="fields"
         @submit="onSubmit"
         :submit="{ label: 'Login', loading }"
@@ -48,7 +48,7 @@ const loading = ref<boolean>(false);
 async function onSubmit(payload: FormSubmitEvent<Schema>): Promise<void> {
   console.log("Submitted", payload.data);
   try {
-    const res = await $fetch("http://localhost:8080/api/v1/auth/login", {
+    const res = await $fetch("/api/auth/login", {
       method: "POST",
       body: {
         username: payload.data.username,
