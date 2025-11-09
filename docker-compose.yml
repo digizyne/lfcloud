@@ -1,0 +1,13 @@
+name: lfcloud
+services:
+  webapp:
+    image: node:24-alpine
+    container_name: lfcloud
+    volumes:
+      - ./:/app
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm run dev"
+    env_file:
+      - .env
