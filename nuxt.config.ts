@@ -9,4 +9,7 @@ export default defineNuxtConfig({
     pageTransition: { name: "pl", mode: "out-in" },
     layoutTransition: { name: "pl", mode: "out-in" },
   },
+  runtimeConfig: {
+    controllerBaseUrl: "http://34.58.48.78/api/v1",
+  },
 });

@@ -2,7 +2,7 @@
   <div>
     <UHeader :toggle="false">
       <template #left>
-        <h1 class="text-xl font-semibold">0p5.dev</h1>
+        <h1 class="text-xl font-semibold font-[Chakra_Petch]">0p5.dev</h1>
       </template>
       <template #right>
         <div class="flex items-center gap-4">

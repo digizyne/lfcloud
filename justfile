@@ -11,11 +11,19 @@ down:
 build:
     npm run build
 
+ar-push: build-docker tag push
+
 build-docker:
-    docker build -t lfcloud:dev -f Dockerfile .
+    docker build -t 0p5.dev:dev -f Dockerfile .
 
 run-docker:
-    docker run -it --rm --name lfcloud -p 3000:3000 lfcloud:dev
+    docker run -it --rm --name 0p5.dev -p 3000:3000 0p5.dev:dev
+
+tag:
+    docker tag 0p5.dev:dev us-central1-docker.pkg.dev/local-first-476300/open-source-application-images/0p5.dev:dev
+
+push:
+    docker push us-central1-docker.pkg.dev/local-first-476300/open-source-application-images/0p5.dev:dev
 
 add PACKAGE *FLAGS:
     npm install {{FLAGS}} {{PACKAGE}}

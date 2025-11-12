@@ -1,8 +1,8 @@
-name: lfcloud
+name: 0p5.dev
 services:
   webapp:
     image: node:24-alpine
-    container_name: lfcloud
+    container_name: 0p5.dev
     volumes:
       - ./:/app
     working_dir: /app

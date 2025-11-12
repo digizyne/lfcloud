@@ -1,9 +1,10 @@
 import * as jose from "jose";
 
 export default defineEventHandler(async (event) => {
+  const runtimeConfig = useRuntimeConfig();
   const body = await readBody(event);
   const { token } = await $fetch<any>(
-    `http://localhost:8080/api/v1/auth/login`,
+    `${runtimeConfig.controllerBaseUrl}/auth/login`,
     {
       method: "POST",
       headers: {

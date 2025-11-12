@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+  const runtimeConfig = useRuntimeConfig();
   const url = getRequestURL(event);
   const pathName = url.pathname.replace("/api", "");
   const token = getCookie(event, "auth.token");
@@ -25,5 +26,6 @@ export default defineEventHandler(async (event) => {
     options.body = JSON.stringify(body);
   }
 
-  return await $fetch(`http://localhost:8080/api/v1${pathName}`, options);
+  const targetUrl = runtimeConfig.controllerBaseUrl + pathName;
+  return await $fetch(targetUrl, options);
 });
