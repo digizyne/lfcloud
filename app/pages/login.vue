@@ -3,11 +3,17 @@
     <UPageCard class="w-xs">
       <UAuthForm
         :schema="schema"
-        title="Login to 0p5.dev"
         :fields="fields"
         @submit="onSubmit"
-        :submit="{ label: 'Login', loading }"
-      />
+        :submit="{ label: 'Login', loading, size: 'xl', class: 'mt-3' }"
+      >
+        <template #title>
+          <p class="text-xl text-pretty font-semibold text-highlighted">
+            Login to
+            <span class="text-primary font-[Chakra_Petch]">0p5.dev</span>
+          </p>
+        </template>
+      </UAuthForm>
     </UPageCard>
   </div>
 </template>
@@ -25,6 +31,7 @@ const fields: AuthFormField[] = [
     label: "Username",
     placeholder: "Enter your username",
     required: true,
+    size: "xl",
   },
   {
     name: "password",
@@ -32,6 +39,7 @@ const fields: AuthFormField[] = [
     type: "password",
     placeholder: "Enter your password",
     required: true,
+    size: "xl",
   },
 ];
 

@@ -1,18 +1,37 @@
 <template>
   <div
-    class="w-screen h-screen bg-[url(/images/landing-page-bg.jpg)] bg-center bg-cover overflow-hidden relative grid place-content-center gap-5"
+    class="w-screen h-screen bg-[url(/images/landing-page-bg.jpg)] bg-center bg-cover overflow-hidden relative flex flex-col gap-10 justify-center items-center"
   >
-    <h1 class="text-white text-7xl text-center font-[Chakra_Petch]">0p5.dev</h1>
+    <h1 class="text-white text-7xl text-center font-[Chakra_Petch] -mb-3">
+      0p5.dev
+    </h1>
     <p class="text-white text-4xl text-center leading-12">
       The deployment platform
       <br />
       <span class="text-primary">for developers </span>
       <span class="text-secondary">by developers</span>
     </p>
-    <div class="flex justify-center gap-5 mt-5 mb-8">
+
+    <div class="flex justify-center gap-5">
       <UButton color="primary" size="xl" to="/docs">Documentation</UButton>
       <UButton color="secondary" size="xl" to="/login">Login</UButton>
     </div>
+    <UCarousel
+      v-slot="{ item, index }"
+      :items="features"
+      class="w-full mx-auto max-w-sm"
+      :autoplay="{ delay: 3500 }"
+      arrows
+    >
+      <UCard class="w-sm">
+        <UAvatar
+          :icon="item.icon"
+          size="3xl"
+          :ui="{ icon: index % 2 === 0 ? 'text-primary' : 'text-secondary' }"
+        />
+        <h3 class="text-xl font-semibold mt-4">{{ item.title }}</h3>
+      </UCard>
+    </UCarousel>
     <UCard>
       <template #header>
         <div class="flex justify-between items-center">
@@ -50,6 +69,23 @@ function copyCommandsToClipboard() {
     textCopied.value = false;
   }, 2000);
 }
-</script>
 
-<style scoped></style>
+const features = [
+  {
+    title: "Scale to zero automatically",
+    icon: "ph:arrows-out-duotone",
+  },
+  {
+    title: "Deploy with one command",
+    icon: "ph:rocket-launch-duotone",
+  },
+  {
+    title: "No configuration beyond Dockerfile",
+    icon: "ph:book-open-duotone",
+  },
+  {
+    title: "High availability by default",
+    icon: "ph:shield-check-duotone",
+  },
+];
+</script>
